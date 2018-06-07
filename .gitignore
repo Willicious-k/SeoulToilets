@@ -3,3 +3,6 @@
 *.xcuserstate
 *.xcuserdatad
 xcshareddata/
+
+Resources/
+ScreenShots/
