@@ -49,8 +49,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Need Help? ☎︎ 120" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y3Y-QW-9Rc">
-                                        <rect key="frame" x="135.33333333333334" y="57.666666666666636" width="105" height="14.333333333333336"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y3Y-QW-9Rc">
+                                        <rect key="frame" x="161.33333333333334" y="57.666666666666636" width="53.333333333333343" height="14.333333333333336"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -102,6 +102,7 @@
                     <connections>
                         <outlet property="bottomPane" destination="qqQ-Xl-qIE" id="fjv-6E-0ti"/>
                         <outlet property="bottomPaneTopAnchor" destination="5Z7-Si-6hj" id="M5i-SC-m67"/>
+                        <outlet property="distanceLabel" destination="Y3Y-QW-9Rc" id="oCM-jc-BVh"/>
                         <outlet property="mapView" destination="S6r-XJ-kg6" id="ubr-nh-lZk"/>
                         <outlet property="navBtnBottomAnchor" destination="1lu-RX-Jkt" id="dKk-lE-ZIN"/>
                         <outlet property="searchDisplayController" destination="NwY-88-Al3" id="Cdp-GI-GJr"/>

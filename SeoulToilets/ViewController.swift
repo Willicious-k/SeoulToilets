@@ -11,24 +11,28 @@ import MapKit
 import CoreLocation
 
 class MainViewController: UIViewController {
-  
   //MARK:- IBOutlets
   @IBOutlet weak var mapView: MKMapView!
   @IBOutlet weak var bottomPane: UIView!
   @IBOutlet weak var bottomPaneTopAnchor: NSLayoutConstraint!
   @IBOutlet weak var navBtnBottomAnchor: NSLayoutConstraint!
   @IBOutlet weak var titleLabel: UILabel!
+  @IBOutlet weak var distanceLabel: UILabel!
   
   //MARK:- InternalData
   var toilets: [Toilet] = []
   var toiletAnnotations: [ToiletAnnotation] = []
   var currentMapItem: MKMapItem!
+  var currentLocation: CLLocation!
+  var nearestAnnotation: ToiletAnnotation!
   let locationManager = CLLocationManager()
   
   var isLocationUpdated: Bool = false {
     didSet {
       if isLocationUpdated {
         locationManager.stopUpdatingLocation()
+        updateDistances()
+        pickNearest()
       } else {
         locationManager.startUpdatingLocation()
       }
@@ -77,6 +81,27 @@ class MainViewController: UIViewController {
   }
   
   //MARK:- Helpers
+  func pickNearest() {
+    mapView.selectAnnotation(nearestAnnotation, animated: true)
+  }
+  
+  func updateDistances() {
+    guard let currentLocation = currentLocation else { return }
+    
+    var nearestDistance: Double = 500.0
+    for annotation in toiletAnnotations {
+      let annotationLocation = CLLocation(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
+      let distance = currentLocation.distance(from: annotationLocation).rounded(.towardZero)
+      annotation.distance = distance
+      
+      if distance < nearestDistance {
+        nearestDistance = distance
+        nearestAnnotation = annotation
+      }
+      
+    }
+  }
+  
   func loadDataFromFile() {
     let jsonFilePath = URL(fileURLWithPath: Bundle.main.path(forResource: "SeoulToilets180602", ofType: "json")! )
     let jsonData = try! Data(contentsOf: jsonFilePath)
@@ -85,7 +110,7 @@ class MainViewController: UIViewController {
   
   func setRegionCamera(toPoint: CLLocationCoordinate2D) {
     let centerPoint = toPoint
-    let regionSpan: CLLocationDistance = 250
+    let regionSpan: CLLocationDistance = 500
     let region = MKCoordinateRegionMakeWithDistance(centerPoint, regionSpan, regionSpan)
     mapView.setRegion(region, animated: true)
   }
@@ -105,7 +130,6 @@ class MainViewController: UIViewController {
 }
 
 extension MainViewController: MKMapViewDelegate {
-  
   func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
     guard let annotation = annotation as? ToiletAnnotation else { return nil }
     
@@ -123,7 +147,7 @@ extension MainViewController: MKMapViewDelegate {
       
       view.glyphTintColor = UIColor.white
       view.glyphImage = UIImage(named: "markerImg")
-      view.markerTintColor = UIColor(named: "markerTint")
+      view.markerTintColor = annotation.distance < 500.0 ? UIColor(named: "markerTint") : UIColor(named: "markerFarTint")
       
       view.canShowCallout = false
       view.displayPriority = .defaultLow
@@ -149,6 +173,7 @@ extension MainViewController: MKMapViewDelegate {
     
     selectedView.titleVisibility = .hidden
     titleLabel.text = locationTitle
+    distanceLabel.text = "\(Int(annotation.distance))m away"
     view.layoutIfNeeded()
     
     currentMapItem = annotation.makeMapItem()
@@ -176,10 +201,11 @@ extension MainViewController: MKMapViewDelegate {
 }
 
 extension MainViewController : CLLocationManagerDelegate {
-
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     guard let location = locations.last, !isLocationUpdated else { return }
-
+    
+    currentLocation = location
+    
     let point = location.coordinate
     setRegionCamera(toPoint: point)
     self.isLocationUpdated = true

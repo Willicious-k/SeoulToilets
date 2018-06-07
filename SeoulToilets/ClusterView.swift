@@ -35,10 +35,19 @@ private extension ClusterView {
     guard let annotation = annotation as? MKClusterAnnotation else { return }
     
     let renderer = UIGraphicsImageRenderer(size: CGSize(width: 32.0, height: 32.0))
+    
+    var sumOfDistance = 0.0
+    for anno in annotation.memberAnnotations {
+      let toiletAnno = anno as! ToiletAnnotation
+      sumOfDistance += toiletAnno.distance
+    }
+    
     let count = annotation.memberAnnotations.count
+    let averageDistance = sumOfDistance / Double(count)
+    
     image = renderer.image { _ in
       
-      UIColor(named: "markerTint")?.setFill()
+      (averageDistance < 500.0 ? UIColor(named: "markerTint") : UIColor(named:"markerFarTint") )?.setFill()
       UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: 32.0, height: 32.0)).fill()
       
       let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white, NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 16.0)]

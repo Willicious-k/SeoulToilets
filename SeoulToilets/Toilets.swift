@@ -9,9 +9,10 @@
 import MapKit
 import Contacts
 
-class ToiletAnnotation: NSObject, MKAnnotation {
+final class ToiletAnnotation: NSObject, MKAnnotation {
   var coordinate: CLLocationCoordinate2D
   var title: String?
+  var distance: CLLocationDistance = 0.0
   
   init(fullName: String, longitude: Double, latitude: Double) {
     self.title = fullName
@@ -30,7 +31,6 @@ class ToiletAnnotation: NSObject, MKAnnotation {
 }
 
 struct Toilet: Codable {
-  
   var id: String = ""
   var fName: String = ""
   var aName: String!
