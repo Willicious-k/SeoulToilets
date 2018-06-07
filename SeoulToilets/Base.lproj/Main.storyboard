@@ -87,10 +87,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="S6r-XJ-kg6" firstAttribute="top" secondItem="T0C-gs-Bp9" secondAttribute="top" id="17A-DC-c2r"/>
                             <constraint firstItem="qqQ-Xl-qIE" firstAttribute="top" secondItem="4Fi-Ic-Q7B" secondAttribute="bottom" priority="999" constant="50" id="1lu-RX-Jkt"/>
                             <constraint firstItem="qqQ-Xl-qIE" firstAttribute="top" secondItem="T0C-gs-Bp9" secondAttribute="bottom" priority="999" constant="34" id="5Z7-Si-6hj"/>
                             <constraint firstItem="S6r-XJ-kg6" firstAttribute="bottom" secondItem="T0C-gs-Bp9" secondAttribute="bottom" id="MBi-m8-R2v"/>
+                            <constraint firstItem="S6r-XJ-kg6" firstAttribute="top" secondItem="T0C-gs-Bp9" secondAttribute="top" id="dZP-HC-Pa7"/>
                             <constraint firstItem="S6r-XJ-kg6" firstAttribute="leading" secondItem="T0C-gs-Bp9" secondAttribute="leading" id="kRF-PJ-IrH"/>
                             <constraint firstItem="qqQ-Xl-qIE" firstAttribute="trailing" secondItem="T0C-gs-Bp9" secondAttribute="trailing" id="ln8-Xd-6k5"/>
                             <constraint firstItem="qqQ-Xl-qIE" firstAttribute="leading" secondItem="T0C-gs-Bp9" secondAttribute="leading" id="sTf-e1-xIy"/>
@@ -105,21 +105,12 @@
                         <outlet property="distanceLabel" destination="Y3Y-QW-9Rc" id="oCM-jc-BVh"/>
                         <outlet property="mapView" destination="S6r-XJ-kg6" id="ubr-nh-lZk"/>
                         <outlet property="navBtnBottomAnchor" destination="1lu-RX-Jkt" id="dKk-lE-ZIN"/>
-                        <outlet property="searchDisplayController" destination="NwY-88-Al3" id="Cdp-GI-GJr"/>
                         <outlet property="titleLabel" destination="0vz-tw-kTh" id="1yi-73-Dhz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4ol-oc-T4T" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="NwY-88-Al3">
-                    <connections>
-                        <outlet property="delegate" destination="ieq-HJ-jTV" id="OTZ-1E-CPr"/>
-                        <outlet property="searchContentsController" destination="ieq-HJ-jTV" id="IYL-3g-xkz"/>
-                        <outlet property="searchResultsDataSource" destination="ieq-HJ-jTV" id="a0p-6e-Qc2"/>
-                        <outlet property="searchResultsDelegate" destination="ieq-HJ-jTV" id="1jw-OH-0bG"/>
-                    </connections>
-                </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="874.39999999999998" y="139.880059970015"/>
+            <point key="canvasLocation" x="874.39999999999998" y="139.65517241379311"/>
         </scene>
     </scenes>
     <resources>

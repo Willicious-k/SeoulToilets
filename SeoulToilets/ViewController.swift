@@ -137,12 +137,14 @@ extension MainViewController: MKMapViewDelegate {
     var view = MKMarkerAnnotationView()
     
     if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKMarkerAnnotationView {
-      // dequeue succeeded
-      dequeuedView.prepareForReuse()
+      // dequeuedView.prepareForReuse()
+      // --> automatically called, but basically does nothing
+      // instead of implementing prepare function, manually reset tintColor
       dequeuedView.annotation = annotation
+      dequeuedView.markerTintColor = annotation.distance < 500.0 ? UIColor(named: "markerTint") : UIColor(named: "markerFarTint")
       view = dequeuedView
     } else {
-      // creating new one
+      // creating new view
       view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
       
       view.glyphTintColor = UIColor.white
