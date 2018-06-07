@@ -17,10 +17,15 @@ class SearchViewController: UIViewController {
     super.viewDidLoad()
   }
   
-  override func viewWillAppear(_ animated: Bool) {
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
     searchBar.becomeFirstResponder()
   }
   
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    searchBar.resignFirstResponder()
+  }
 }
 
 extension SearchViewController: UISearchBarDelegate {
