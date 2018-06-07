@@ -9,25 +9,27 @@
 /* Begin PBXBuildFile section */
 		1E082DC620C63FD0001CFE64 /* ClusterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E082DC520C63FD0001CFE64 /* ClusterView.swift */; };
 		1E23887F209AC6C2001ECFAA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E23887E209AC6C2001ECFAA /* AppDelegate.swift */; };
-		1E238881209AC6C2001ECFAA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E238880209AC6C2001ECFAA /* ViewController.swift */; };
+		1E238881209AC6C2001ECFAA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E238880209AC6C2001ECFAA /* MainViewController.swift */; };
 		1E238884209AC6C2001ECFAA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E238882209AC6C2001ECFAA /* Main.storyboard */; };
 		1E238886209AC6C3001ECFAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E238885209AC6C3001ECFAA /* Assets.xcassets */; };
 		1E238889209AC6C3001ECFAA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E238887209AC6C3001ECFAA /* LaunchScreen.storyboard */; };
 		1E238891209AC6E5001ECFAA /* SeoulToilets180602.json in Resources */ = {isa = PBXBuildFile; fileRef = 1E238890209AC6E4001ECFAA /* SeoulToilets180602.json */; };
 		1E238893209AC969001ECFAA /* Toilets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E238892209AC969001ECFAA /* Toilets.swift */; };
+		1E765D3A20C8F4D70045DA83 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E765D3920C8F4D70045DA83 /* SearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1E082DC520C63FD0001CFE64 /* ClusterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClusterView.swift; sourceTree = "<group>"; };
 		1E23887B209AC6C2001ECFAA /* SeoulToilets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeoulToilets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E23887E209AC6C2001ECFAA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1E238880209AC6C2001ECFAA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1E238880209AC6C2001ECFAA /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		1E238883209AC6C2001ECFAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1E238885209AC6C3001ECFAA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1E238888209AC6C3001ECFAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1E23888A209AC6C3001ECFAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1E238890209AC6E4001ECFAA /* SeoulToilets180602.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SeoulToilets180602.json; sourceTree = "<group>"; };
 		1E238892209AC969001ECFAA /* Toilets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toilets.swift; sourceTree = "<group>"; };
+		1E765D3920C8F4D70045DA83 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +64,8 @@
 			children = (
 				1E23887E209AC6C2001ECFAA /* AppDelegate.swift */,
 				1E238892209AC969001ECFAA /* Toilets.swift */,
-				1E238880209AC6C2001ECFAA /* ViewController.swift */,
+				1E238880209AC6C2001ECFAA /* MainViewController.swift */,
+				1E765D3920C8F4D70045DA83 /* SearchViewController.swift */,
 				1E082DC520C63FD0001CFE64 /* ClusterView.swift */,
 				1E238885209AC6C3001ECFAA /* Assets.xcassets */,
 				1E238882209AC6C2001ECFAA /* Main.storyboard */,
@@ -145,7 +148,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1E238881209AC6C2001ECFAA /* ViewController.swift in Sources */,
+				1E765D3A20C8F4D70045DA83 /* SearchViewController.swift in Sources */,
+				1E238881209AC6C2001ECFAA /* MainViewController.swift in Sources */,
 				1E082DC620C63FD0001CFE64 /* ClusterView.swift in Sources */,
 				1E23887F209AC6C2001ECFAA /* AppDelegate.swift in Sources */,
 				1E238893209AC969001ECFAA /* Toilets.swift in Sources */,

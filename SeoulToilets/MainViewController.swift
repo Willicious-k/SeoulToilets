@@ -227,3 +227,15 @@ extension MainViewController : CLLocationManagerDelegate {
   }
 
 }
+
+extension MainViewController: UISearchBarDelegate {
+  func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+    defer {
+      performSegue(withIdentifier: "toSearch", sender: self)
+    }
+    return false
+  }
+  
+}
+
+
