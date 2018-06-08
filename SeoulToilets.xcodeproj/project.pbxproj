@@ -64,19 +64,43 @@
 		1E23887D209AC6C2001ECFAA /* SeoulToilets */ = {
 			isa = PBXGroup;
 			children = (
+				1E6BF30E20CAAD6C00747D69 /* Model */,
+				1E6BF30D20CAAD4600747D69 /* Controllers */,
+				1E6BF30F20CAAD8F00747D69 /* Views */,
 				1E23887E209AC6C2001ECFAA /* AppDelegate.swift */,
-				1E238892209AC969001ECFAA /* Toilets.swift */,
+				1E23888A209AC6C3001ECFAA /* Info.plist */,
+				1E238885209AC6C3001ECFAA /* Assets.xcassets */,
+				1E238890209AC6E4001ECFAA /* SeoulToilets180602.json */,
+			);
+			path = SeoulToilets;
+			sourceTree = "<group>";
+		};
+		1E6BF30D20CAAD4600747D69 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
 				1E238880209AC6C2001ECFAA /* MainViewController.swift */,
 				1E765D3920C8F4D70045DA83 /* SearchViewController.swift */,
-				1E238885209AC6C3001ECFAA /* Assets.xcassets */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		1E6BF30E20CAAD6C00747D69 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1E238892209AC969001ECFAA /* Toilets.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1E6BF30F20CAAD8F00747D69 /* Views */ = {
+			isa = PBXGroup;
+			children = (
 				1E082DC520C63FD0001CFE64 /* ClusterView.swift */,
 				1EE5BDA620CA4193005C8CE8 /* TableViewCells.swift */,
 				1E238882209AC6C2001ECFAA /* Main.storyboard */,
 				1E238887209AC6C3001ECFAA /* LaunchScreen.storyboard */,
-				1E23888A209AC6C3001ECFAA /* Info.plist */,
-				1E238890209AC6E4001ECFAA /* SeoulToilets180602.json */,
 			);
-			path = SeoulToilets;
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
