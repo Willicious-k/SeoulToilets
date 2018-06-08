@@ -15,6 +15,8 @@ class SearchViewController: UIViewController {
   
   //MARK:- internal data
   var pickedAnnotation: ToiletAnnotation!
+  var keyword: String!
+  
   var toiletsAnnotations: [ToiletAnnotation] = []
   var searchingResult: [ToiletAnnotation] = []
   var predicate: NSPredicate!
@@ -67,6 +69,7 @@ extension SearchViewController: UISearchBarDelegate {
     }
     
     guard let targetText = searchBar.text else { return }
+    keyword = targetText
     predicate = NSPredicate(format: "%K contains %@", "title", targetText)
     
     searchingResult = toiletsAnnotations.filter{ toiletAnnotation -> Bool in
@@ -86,8 +89,8 @@ extension SearchViewController: UISearchBarDelegate {
     }
     
     guard let targetText = searchBar.text else { return }
+    keyword = targetText
     predicate = NSPredicate(format: "%K contains %@", "title", targetText)
-
     
     searchingResult = toiletsAnnotations.filter{ toiletAnnotation -> Bool in
       self.predicate.evaluate(with: toiletAnnotation)

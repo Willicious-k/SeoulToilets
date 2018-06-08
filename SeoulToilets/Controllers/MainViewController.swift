@@ -18,6 +18,7 @@ class MainViewController: UIViewController {
   @IBOutlet weak var navBtnBottomAnchor: NSLayoutConstraint!
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var distanceLabel: UILabel!
+  @IBOutlet weak var searchBar: UISearchBar!
   
   //MARK:- InternalData
   var toilets: [Toilet] = []
@@ -28,6 +29,7 @@ class MainViewController: UIViewController {
   let locationManager = CLLocationManager()
   
   var pickedAnnotation: ToiletAnnotation?
+  var keyword: String?
   var isLocationUpdated: Bool = false {
     didSet {
       if isLocationUpdated {
@@ -70,6 +72,7 @@ class MainViewController: UIViewController {
     if let picked = pickedAnnotation {
       let point = picked.coordinate
       setRegionCamera(toPoint: point)
+      searchBar.text = keyword
       mapView.selectAnnotation(picked, animated: true)
     } else {
       isLocationUpdated = false
@@ -97,6 +100,8 @@ class MainViewController: UIViewController {
   @IBAction func unwindFromSearching(_ sender: UIStoryboardSegue) {
     guard let searchVC = sender.source as? SearchViewController else { return }
     pickedAnnotation = searchVC.pickedAnnotation
+    keyword = searchVC.keyword
+    
   }
   
   //MARK:- Helpers
