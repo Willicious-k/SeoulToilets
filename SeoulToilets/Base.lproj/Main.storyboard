@@ -228,9 +228,11 @@
                     <connections>
                         <outlet property="resultTable" destination="roX-92-7Ao" id="Kxh-ET-gH4"/>
                         <outlet property="searchBar" destination="CR4-8B-2np" id="c3q-x9-EhX"/>
+                        <segue destination="wsr-Lc-CQr" kind="unwind" identifier="returnToMap" unwindAction="unwindFromSearching:" id="iIG-w8-ail"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hJQ-RP-2Gc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="wsr-Lc-CQr" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1628" y="139.65517241379311"/>
         </scene>
@@ -238,9 +240,6 @@
     <resources>
         <image name="locationBtn" width="100" height="100"/>
         <image name="navBtn" width="100" height="100"/>
-        <namedColor name="markerTint">
-            <color red="1" green="0.35294117647058826" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="markerTint">
             <color red="1" green="0.35294117647058826" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

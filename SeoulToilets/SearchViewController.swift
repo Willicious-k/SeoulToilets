@@ -5,6 +5,8 @@
 //  Created by 김성종 on 2018. 6. 7..
 //  Copyright © 2018년 Willicious-k. All rights reserved.
 //
+// scrolling with keyboard, transitioning animation, sort search result
+//
 
 import UIKit
 
@@ -14,8 +16,10 @@ class SearchViewController: UIViewController {
   @IBOutlet weak var resultTable: UITableView!
   
   //MARK:- internal data
+  var pickedAnnotation: ToiletAnnotation!
   var toiletsAnnotations: [ToiletAnnotation] = []
   var searchingResult: [ToiletAnnotation] = []
+  var predicate: NSPredicate!
   
   var isSearching: Bool = false {
     didSet {
@@ -46,11 +50,12 @@ class SearchViewController: UIViewController {
     super.viewWillDisappear(animated)
     searchBar.resignFirstResponder()
   }
+  
 }
 
 extension SearchViewController: UISearchBarDelegate {
   func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-    dismiss(animated: true, completion: nil)
+    performSegue(withIdentifier: "returnToMap", sender: self)
   }
   
   func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -59,12 +64,35 @@ extension SearchViewController: UISearchBarDelegate {
     } else {
       isSearching = false
     }
-    //TODO: partial search here
+    
+    guard let targetText = searchBar.text else { return }
+    predicate = NSPredicate(format: "%K contains %@", "title", targetText)
+    
+    searchingResult = toiletsAnnotations.filter{ toiletAnnotation -> Bool in
+      self.predicate.evaluate(with: toiletAnnotation)
+    }
+    
+    resultTable.reloadData()
   }
   
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
     searchBar.resignFirstResponder()
-    //TODO: full search here
+    
+    // enables button manually
+    // accessing button by keypath
+    if let cancelButton = searchBar.value(forKey: "cancelButton") as? UIButton {
+      cancelButton.isEnabled = true
+    }
+    
+    guard let targetText = searchBar.text else { return }
+    predicate = NSPredicate(format: "%K contains %@", "title", targetText)
+
+    
+    searchingResult = toiletsAnnotations.filter{ toiletAnnotation -> Bool in
+      self.predicate.evaluate(with: toiletAnnotation)
+    }
+    
+    resultTable.reloadData()
   }
   
 }
@@ -85,14 +113,24 @@ extension SearchViewController: UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     if indexPath.section == 1 {
-      guard let cell = tableView.dequeueReusableCell(withIdentifier: "countCell") as? CountCell else { return UITableViewCell() }
+      guard
+        let cell = tableView.dequeueReusableCell(withIdentifier: "countCell") as? CountCell
+      else { return UITableViewCell() }
       
       cell.countLabel.text = isSearching ? "\(searchingResult.count) toilets found" : "\(toiletsAnnotations.count) toilets total"
       return cell
       
     } else {
-      guard let cell = tableView.dequeueReusableCell(withIdentifier: "annotationCell") as? AnnotationCell else { return UITableViewCell() }
-      //TODO: result cell drawing here
+      guard
+        let cell = tableView.dequeueReusableCell(withIdentifier: "annotationCell") as? AnnotationCell,
+        searchingResult.count > 0
+      else { return UITableViewCell() }
+      
+      let distance = searchingResult[indexPath.row].distance
+      
+      cell.buildingNameLabel.text = searchingResult[indexPath.row].title
+      cell.distanceLabel.text = distance > 1000 ? String(format: "%.2f km away", distance / 1000.0) : "\(Int(distance)) m away"
+      
       return cell
     }
   }

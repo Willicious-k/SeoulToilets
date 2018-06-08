@@ -25,6 +25,7 @@ class MainViewController: UIViewController {
   var currentMapItem: MKMapItem!
   var currentLocation: CLLocation!
   var nearestAnnotation: ToiletAnnotation!
+  var pickedAnnotation: ToiletAnnotation?
   let locationManager = CLLocationManager()
   
   var isLocationUpdated: Bool = false {
@@ -84,6 +85,11 @@ class MainViewController: UIViewController {
     guard let mapItem = currentMapItem else { return }
     let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking]
     mapItem.openInMaps(launchOptions: launchOptions)
+  }
+  
+  @IBAction func unwindFromSearching(_ sender: UIStoryboardSegue) {
+    guard let searchVC = sender.source as? SearchViewController else { return }
+    pickedAnnotation = searchVC.pickedAnnotation
   }
   
   //MARK:- Helpers
@@ -180,8 +186,9 @@ extension MainViewController: MKMapViewDelegate {
     else { return }
     
     selectedView.titleVisibility = .hidden
+    
     titleLabel.text = locationTitle
-    distanceLabel.text = "\(Int(annotation.distance))m away"
+    distanceLabel.text = annotation.distance > 1000 ? String(format: "%.2f km away", annotation.distance / 1000.0) : "\(Int(annotation.distance)) m away"
     view.layoutIfNeeded()
     
     currentMapItem = annotation.makeMapItem()
