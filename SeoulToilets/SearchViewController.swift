@@ -5,7 +5,6 @@
 //  Created by 김성종 on 2018. 6. 7..
 //  Copyright © 2018년 Willicious-k. All rights reserved.
 //
-// scrolling with keyboard, transitioning animation, sort search result
 //
 
 import UIKit
@@ -35,6 +34,7 @@ class SearchViewController: UIViewController {
   //MARK:- LifeCycles
   override func viewDidLoad() {
     super.viewDidLoad()
+    resultTable.tableFooterView = UIView(frame: CGRect.zero)
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -138,4 +138,10 @@ extension SearchViewController: UITableViewDataSource {
 }
 
 extension SearchViewController: UITableViewDelegate {
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    pickedAnnotation = searchingResult[indexPath.row]
+    performSegue(withIdentifier: "returnToMap", sender: self)
+  }
 }
+
+

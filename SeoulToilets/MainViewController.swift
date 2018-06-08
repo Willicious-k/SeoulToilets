@@ -25,9 +25,9 @@ class MainViewController: UIViewController {
   var currentMapItem: MKMapItem!
   var currentLocation: CLLocation!
   var nearestAnnotation: ToiletAnnotation!
-  var pickedAnnotation: ToiletAnnotation?
   let locationManager = CLLocationManager()
   
+  var pickedAnnotation: ToiletAnnotation?
   var isLocationUpdated: Bool = false {
     didSet {
       if isLocationUpdated {
@@ -67,12 +67,18 @@ class MainViewController: UIViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    isLocationUpdated = false
+    if let picked = pickedAnnotation {
+      let point = picked.coordinate
+      setRegionCamera(toPoint: point)
+      mapView.selectAnnotation(picked, animated: true)
+    } else {
+      isLocationUpdated = false
+    }
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     guard let dest = segue.destination as? SearchViewController else { return }
-    
+
     dest.toiletsAnnotations = toiletAnnotations
   }
   
