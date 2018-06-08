@@ -80,6 +80,7 @@ class MainViewController: UIViewController {
     guard let dest = segue.destination as? SearchViewController else { return }
 
     dest.toiletsAnnotations = toiletAnnotations
+    dest.transitioningDelegate = self
   }
   
   //MARK:- IBActions
@@ -199,7 +200,7 @@ extension MainViewController: MKMapViewDelegate {
     
     currentMapItem = annotation.makeMapItem()
     
-    UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseOut], animations: {
+    UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseOut], animations: {
       self.bottomPaneTopAnchor.constant = -80
       self.navBtnBottomAnchor.constant = 16
       self.view.layoutIfNeeded()
@@ -212,7 +213,7 @@ extension MainViewController: MKMapViewDelegate {
     selectedView.titleVisibility = .visible
     view.layoutIfNeeded()
     
-    UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseIn], animations: {
+    UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseIn], animations: {
       self.bottomPaneTopAnchor.constant = 34
       self.navBtnBottomAnchor.constant = 50
       self.view.layoutIfNeeded()
@@ -253,6 +254,21 @@ extension MainViewController: UISearchBarDelegate {
       performSegue(withIdentifier: "toSearch", sender: self)
     }
     return false
+  }
+  
+}
+
+extension MainViewController: UIViewControllerTransitioningDelegate {
+  func animationController(
+    forPresented presented: UIViewController,
+    presenting: UIViewController,
+    source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    return ToSearchAnimator(frame: mapView.frame)
+  }
+  
+  func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    guard let _ = dismissed as? SearchViewController else { return nil }
+    return ReturnToMainAnimator(frame: mapView.frame)
   }
   
 }

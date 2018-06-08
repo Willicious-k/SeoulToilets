@@ -42,11 +42,13 @@ class SearchViewController: UIViewController {
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
+    searchBar.setShowsCancelButton(true, animated: true)
     searchBar.becomeFirstResponder()
   }
   
   override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
+    searchBar.setShowsCancelButton(false, animated: true)
     searchBar.resignFirstResponder()
   }
   
