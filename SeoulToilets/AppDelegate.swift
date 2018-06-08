@@ -24,8 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
   
   func applicationWillEnterForeground(_ application: UIApplication) {
-    let currentVC = UIApplication.shared.keyWindow?.rootViewController as? MainViewController
-    currentVC?.isLocationUpdated = false
+    if let currentVC = UIApplication.shared.keyWindow?.rootViewController as? MainViewController {
+      currentVC.isLocationUpdated = false
+    }
   }
   
   func applicationDidBecomeActive(_ application: UIApplication) {

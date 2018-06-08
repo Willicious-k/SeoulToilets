@@ -69,6 +69,12 @@ class MainViewController: UIViewController {
     isLocationUpdated = false
   }
   
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    guard let dest = segue.destination as? SearchViewController else { return }
+    
+    dest.toiletsAnnotations = toiletAnnotations
+  }
+  
   //MARK:- IBActions
   @IBAction func moveRegionToCurrentLocation(_ sender: Any) {
     isLocationUpdated = false

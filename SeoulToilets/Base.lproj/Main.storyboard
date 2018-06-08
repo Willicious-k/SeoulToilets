@@ -6,6 +6,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -135,24 +136,75 @@
                             <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Station" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CR4-8B-2np">
                                 <rect key="frame" x="0.0" y="44" width="375" height="56"/>
                                 <color key="barTintColor" name="markerTint"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="search" textContentType="location"/>
                                 <connections>
                                     <outlet property="delegate" destination="sa8-Tu-3di" id="k4s-If-ewY"/>
                                 </connections>
                             </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="roX-92-7Ao">
-                                <rect key="frame" x="0.0" y="145.66666666666669" width="375" height="666.33333333333326"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="roX-92-7Ao">
+                                <rect key="frame" x="0.0" y="100" width="375" height="712"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="separatorInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchCell" id="Toc-Tl-InT">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="annotationCell" id="Toc-Tl-InT" customClass="AnnotationCell" customModule="SeoulToilets" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Toc-Tl-InT" id="Xz1-bK-q9p">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="meter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jPh-GO-vuL">
+                                                    <rect key="frame" x="289" y="12" width="45" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="buildingName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jdv-jx-dni">
+                                                    <rect key="frame" x="15.000000000000007" y="12" width="105.66666666666669" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Jdv-jx-dni" secondAttribute="trailingMargin" id="807-Xh-lyG"/>
+                                                <constraint firstItem="jPh-GO-vuL" firstAttribute="trailing" secondItem="Xz1-bK-q9p" secondAttribute="trailingMargin" id="9BC-FM-g6G"/>
+                                                <constraint firstItem="jPh-GO-vuL" firstAttribute="centerY" secondItem="Xz1-bK-q9p" secondAttribute="centerY" id="TZE-Ag-Rau"/>
+                                                <constraint firstItem="jPh-GO-vuL" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Xz1-bK-q9p" secondAttribute="leadingMargin" id="WTf-3K-Z4e"/>
+                                                <constraint firstItem="Jdv-jx-dni" firstAttribute="leading" secondItem="Xz1-bK-q9p" secondAttribute="leadingMargin" id="ySb-nq-PUa"/>
+                                                <constraint firstItem="Jdv-jx-dni" firstAttribute="centerY" secondItem="Xz1-bK-q9p" secondAttribute="centerY" id="z9b-rq-plw"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="tintColor" name="markerTint"/>
+                                        <inset key="separatorInset" minX="12" minY="0.0" maxX="12" maxY="0.0"/>
+                                        <connections>
+                                            <outlet property="buildingNameLabel" destination="Jdv-jx-dni" id="4KN-4u-GqQ"/>
+                                            <outlet property="distanceLabel" destination="jPh-GO-vuL" id="227-7d-Dv5"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="countCell" id="IZ6-fa-hJQ" customClass="CountCell" customModule="SeoulToilets" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IZ6-fa-hJQ" id="BCj-ZX-iP4">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4938 toilets Found" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FP9-jF-pih">
+                                                    <rect key="frame" x="114.66666666666667" y="11" width="145.33333333333331" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="FP9-jF-pih" firstAttribute="centerY" secondItem="BCj-ZX-iP4" secondAttribute="centerY" id="aYC-m7-63q"/>
+                                                <constraint firstItem="FP9-jF-pih" firstAttribute="centerX" secondItem="BCj-ZX-iP4" secondAttribute="centerX" id="bAe-ek-nFQ"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="12" minY="0.0" maxX="12" maxY="0.0"/>
+                                        <connections>
+                                            <outlet property="countLabel" destination="FP9-jF-pih" id="XHT-8q-TF3"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -160,12 +212,6 @@
                                     <outlet property="delegate" destination="sa8-Tu-3di" id="2x7-y0-yNU"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="countFound" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XzX-gx-kB3">
-                                <rect key="frame" x="139.66666666666666" y="112" width="97" height="21.666666666666657"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -174,14 +220,13 @@
                             <constraint firstItem="CR4-8B-2np" firstAttribute="leading" secondItem="jA4-R8-tYs" secondAttribute="leading" id="DBu-Pr-cpd"/>
                             <constraint firstItem="CR4-8B-2np" firstAttribute="trailing" secondItem="jA4-R8-tYs" secondAttribute="trailing" id="NCc-Za-jXp"/>
                             <constraint firstAttribute="bottom" secondItem="roX-92-7Ao" secondAttribute="bottom" id="OC1-YL-LL0"/>
-                            <constraint firstItem="XzX-gx-kB3" firstAttribute="centerX" secondItem="MVt-lq-LZE" secondAttribute="centerX" id="d5a-kr-ZBA"/>
+                            <constraint firstItem="roX-92-7Ao" firstAttribute="top" secondItem="CR4-8B-2np" secondAttribute="bottom" id="YBy-Gx-Zw6"/>
                             <constraint firstItem="CR4-8B-2np" firstAttribute="top" secondItem="jA4-R8-tYs" secondAttribute="top" id="iY3-og-6JW"/>
-                            <constraint firstItem="roX-92-7Ao" firstAttribute="top" secondItem="XzX-gx-kB3" secondAttribute="bottom" constant="12" id="qtg-FI-o3V"/>
-                            <constraint firstItem="XzX-gx-kB3" firstAttribute="top" secondItem="CR4-8B-2np" secondAttribute="bottom" constant="12" id="yvV-Sd-Yux"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jA4-R8-tYs"/>
                     </view>
                     <connections>
+                        <outlet property="resultTable" destination="roX-92-7Ao" id="Kxh-ET-gH4"/>
                         <outlet property="searchBar" destination="CR4-8B-2np" id="c3q-x9-EhX"/>
                     </connections>
                 </viewController>
@@ -193,6 +238,9 @@
     <resources>
         <image name="locationBtn" width="100" height="100"/>
         <image name="navBtn" width="100" height="100"/>
+        <namedColor name="markerTint">
+            <color red="1" green="0.35294117647058826" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="markerTint">
             <color red="1" green="0.35294117647058826" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
