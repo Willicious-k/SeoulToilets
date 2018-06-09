@@ -52,6 +52,7 @@ class MainViewController: UIViewController {
     
     locationManager.delegate = self
     locationManager.desiredAccuracy = kCLLocationAccuracyBest
+    locationManager.distanceFilter = 500
     
     mapView.delegate = self
     mapView.register(ClusterView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier)
@@ -106,7 +107,8 @@ class MainViewController: UIViewController {
   
   //MARK:- Helpers
   func pickNearest() {
-    mapView.selectAnnotation(nearestAnnotation, animated: true)
+    guard let nearest = nearestAnnotation else { return }
+    mapView.selectAnnotation(nearest, animated: true)
   }
   
   func updateDistances() {
@@ -182,14 +184,6 @@ extension MainViewController: MKMapViewDelegate {
     return view
   }
   
-  func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-    guard !isLocationUpdated else { return }
-    
-    let currentLocation = userLocation.coordinate
-    setRegionCamera(toPoint: currentLocation)
-    self.isLocationUpdated = true
-  }
-  
   func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
     guard
       let selectedView = view as? MKMarkerAnnotationView,
@@ -229,7 +223,7 @@ extension MainViewController: MKMapViewDelegate {
 
 extension MainViewController : CLLocationManagerDelegate {
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-    guard let location = locations.last, !isLocationUpdated else { return }
+    guard let location = locations.first, !isLocationUpdated else { return }
     
     currentLocation = location
     
