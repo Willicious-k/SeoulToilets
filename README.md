@@ -1,4 +1,4 @@
-# <center> ![Icon](Resources/SeoulToiletsIcons/icon_40pt@2x.png) SeoulToilets </center>
+# ![Icon](Resources/SeoulToiletsIcons/icon_40pt@2x.png) SeoulToilets
 
 <p align="center">
 ![swift](https://img.shields.io/badge/swift-4.1-ff6600.svg)
@@ -16,7 +16,7 @@ Find nearby open toilets in Seoul quickly!
 ![shot2](ScreenShots/p55-2-resize.png)
 ![shot3](ScreenShots/p55-3-resize.png)
 ![shot4](ScreenShots/p55-4-resize.png)
-<p>
+</p>
 
 ## Version History
 - v1.0.4: Bugged in nearestLocation (causing Crash!)
