@@ -1,21 +1,22 @@
 # <center> ![Icon](Resources/SeoulToiletsIcons/icon_40pt@2x.png) SeoulToilets </center>
 
-<center>
+<p align="center">
 ![swift](https://img.shields.io/badge/swift-4.1-ff6600.svg)
 ![xcode](https://img.shields.io/badge/xcode-9.3-0087ff.svg)
 ![contacts](https://img.shields.io/badge/contacts-@Willicious.k-ff5a00.svg)
 ![license](https://img.shields.io/github/license/mashape/apistatus.svg) <br><br>
 Find nearby open toilets in Seoul quickly!
-</center>
+</p>
 
 ## Previews
+<p align="center">
 [to: Youtube](https://youtu.be/ulOin1p9VVU) <br><br>
 
 ![shot1](ScreenShots/p55-1-resize.png)
 ![shot2](ScreenShots/p55-2-resize.png)
 ![shot3](ScreenShots/p55-3-resize.png)
 ![shot4](ScreenShots/p55-4-resize.png)
-
+<p>
 
 ## Version History
 - v1.0.4: Bugged in nearestLocation (causing Crash!)
