@@ -2,7 +2,8 @@
 Find nearby open toilets in Seoul quickly!
 
 ## Previews
-[to: Youtube](https://youtu.be/ulOin1p9VVU) <br>
+[to: Youtube](https://youtu.be/ulOin1p9VVU) <br><br>
+
 ![shot1](ScreenShots/p55-1-resize.png)
 ![shot2](ScreenShots/p55-2-resize.png)
 ![shot3](ScreenShots/p55-3-resize.png)
