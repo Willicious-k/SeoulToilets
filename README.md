@@ -1,10 +1,10 @@
 # ![Icon](Resources/SeoulToiletsIcons/icon_40pt@2x.png) SeoulToilets
 
 <p align="center">
-![swift](https://img.shields.io/badge/swift-4.1-ff6600.svg)
-![xcode](https://img.shields.io/badge/xcode-9.3-0087ff.svg)
-![contacts](https://img.shields.io/badge/contacts-@Willicious.k-ff5a00.svg)
-![license](https://img.shields.io/github/license/mashape/apistatus.svg) <br><br>
+<img src="https://img.shields.io/badge/swift-4.1-ff6600.svg" />
+<img src="https://img.shields.io/badge/xcode-9.3-0087ff.svg" />
+<img src="https://img.shields.io/badge/contacts-@Willicious.k-ff5a00.svg" />
+<img src="https://img.shields.io/github/license/mashape/apistatus.svg" /> <br><br>
 Find nearby open toilets in Seoul quickly!
 </p>
 
