@@ -1,4 +1,4 @@
-# ![Icon](Resources/SeoulToiletsIcons/icon_40pt@2x.png) SeoulToilets
+# <p align="center"> ![Icon](Resources/SeoulToiletsIcons/icon_40pt@2x.png) SeoulToilets </p>
 
 <p align="center">
 <img src="https://img.shields.io/badge/swift-4.1-ff6600.svg" />
